@@ -44,26 +44,13 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".highscore").textContent = highscore;
     }
 
-    // When guess is higher
-  } else if (guess > secretNumber) {
+    // When guess is wrong
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector(".message").textContent = "📈 Too high!";
+      document.querySelector(".message").textContent =
+        guess > secretNumber ? "📈 Too high!" : "📈 Too high!";
       score--;
       document.querySelector(".score").textContent = score;
-    } else {
-      // Game stopping when score reaches 0
-      document.querySelector(".message").textContent = "💥 You lost the game!";
-      document.querySelector(".score").textContent = 0;
-      // Changing background color when losing
-      document.querySelector("body").style.backgroundColor = "#FC3153";
-    }
-
-    // When guess is lower
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      score--;
-      document.querySelector(".score").textContent = score;
-      document.querySelector(".message").textContent = "📉 Too low!";
     } else {
       // Game stopping when score reaches 0
       document.querySelector(".message").textContent = "💥 You lost the game!";
