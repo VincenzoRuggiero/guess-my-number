@@ -19,6 +19,10 @@ document.querySelector(".check").addEventListener("click", function () {
     // When player wins
   } else if (guess === secretNumber) {
     document.querySelector(".message").textContent = "🎉 Correct number!";
+    // Changing background color when winning
+    document.querySelector("body").style.backgroundColor = "#60b347";
+    // Increasing CPU number box width
+    document.querySelector(".number").style.width = "30rem";
 
     // When guess is higher
   } else if (guess > secretNumber) {
@@ -30,6 +34,8 @@ document.querySelector(".check").addEventListener("click", function () {
       // Game stopping when score reaches 0
       document.querySelector(".message").textContent = "💥 You lost the game!";
       document.querySelector(".score").textContent = 0;
+      // Changing background color when losing
+      document.querySelector("body").style.backgroundColor = "#FC3153";
     }
 
     // When guess is lower
@@ -42,6 +48,8 @@ document.querySelector(".check").addEventListener("click", function () {
       // Game stopping when score reaches 0
       document.querySelector(".message").textContent = "💥 You lost the game!";
       document.querySelector(".score").textContent = 0;
+      // Changing background color when losing
+      document.querySelector("body").style.backgroundColor = "#FC3153";
     }
   }
 });
