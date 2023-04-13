@@ -1,16 +1,26 @@
 "use strict";
 
 // CPU random number generator;
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
-document.querySelector(".number").textContent = secretNumber;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 // Supporting variable to update user's score
 let score = 20;
 
+// Restarting game button
+document.querySelector(".again").addEventListener("click", function () {
+  score = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector(".message").textContent = "Start guessing...";
+  document.querySelector(".guess").value = "";
+  document.querySelector(".score").textContent = score;
+  document.querySelector("body").style.backgroundColor = "#222";
+  document.querySelector(".number").style.width = "15rem";
+  document.querySelector(".number").textContent = "?";
+});
+
 // User input 'Check' logic
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
-  console.log(guess, typeof guess);
 
   // When there's no input
   if (!guess) {
@@ -19,6 +29,7 @@ document.querySelector(".check").addEventListener("click", function () {
     // When player wins
   } else if (guess === secretNumber) {
     document.querySelector(".message").textContent = "🎉 Correct number!";
+    document.querySelector(".number").textContent = secretNumber;
     // Changing background color when winning
     document.querySelector("body").style.backgroundColor = "#60b347";
     // Increasing CPU number box width
