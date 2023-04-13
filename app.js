@@ -6,6 +6,9 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 // Supporting variable to update user's score
 let score = 20;
 
+// Supporting variable to update highscore
+let highscore = 0;
+
 // Restarting game button
 document.querySelector(".again").addEventListener("click", function () {
   score = 20;
@@ -34,6 +37,12 @@ document.querySelector(".check").addEventListener("click", function () {
     document.querySelector("body").style.backgroundColor = "#60b347";
     // Increasing CPU number box width
     document.querySelector(".number").style.width = "30rem";
+
+    // Update highscore when player wins
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector(".highscore").textContent = highscore;
+    }
 
     // When guess is higher
   } else if (guess > secretNumber) {
